@@ -20,6 +20,8 @@ COPY --from=builder /app /app
 
 COPY . /app
 
+RUN which uvicorn || echo "Uvicorn not found"
+
 EXPOSE 8000
 
 ENTRYPOINT ["./entrypoint.sh"]
