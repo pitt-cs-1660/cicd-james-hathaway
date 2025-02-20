@@ -11,16 +11,16 @@ COPY pyproject.toml poetry.lock ./
 RUN poetry config virtualenvs.create false \
 && poetry install --no-root --no-interaction --no-ansi
 
-#application steps
+# application steps
 FROM python:3.11-buster AS app
 
 WORKDIR /app
 
-COPY --from=builder /app /app
+# Copy dependencies from builder stage
+COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
+COPY --from=builder /usr/local/bin /usr/local/bin
 
 COPY . /app
-
-RUN which uvicorn || echo "Uvicorn not found"
 
 EXPOSE 8000
 
