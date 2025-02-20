@@ -76,6 +76,7 @@ jobs:
         with:
           project_id: 'cicd-project-451516' # update with your project ID
           workload_identity_provider: 'projects/141660277752/locations/global/workloadIdentityPools/github-1/providers/my-repo'
+          service_account: 'github-actions-sa@cicd-project-451516.iam.gserviceaccount.com'
 
 #      # configure/login with docker
       - name: gcloud Configure Docker
