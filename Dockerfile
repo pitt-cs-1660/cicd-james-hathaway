@@ -16,6 +16,7 @@ FROM python:3.11-buster AS app
 
 WORKDIR /app
 
+
 # Copy dependencies from builder stage
 COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
